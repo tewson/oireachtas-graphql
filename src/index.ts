@@ -6,7 +6,14 @@ import { OireachtasAPI } from "./OireachtasAPI";
 const typeDefs = gql`
   type House {
     uri: String
+    members: [Member]
   }
+
+  type Member {
+    uri: String
+    fullName: String
+  }
+
   type Query {
     house(type: String!, term: String!): House
   }
@@ -16,6 +23,11 @@ const resolvers: IResolvers = {
   Query: {
     house: async (_, { type, term }, { dataSources }) => {
       return dataSources.oireachtasAPI.getHouse(type, term);
+    }
+  },
+  House: {
+    members: async ({ uri: houseUri }, _, { dataSources }) => {
+      return dataSources.oireachtasAPI.getMembers({ houseUri });
     }
   }
 };
