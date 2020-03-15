@@ -1,27 +1,29 @@
+import { IResolvers } from "graphql-tools";
 import { ApolloServer, gql } from "apollo-server";
+
+import { OireachtasAPI } from "./OireachtasAPI";
 
 const typeDefs = gql`
   type House {
     uri: String
   }
   type Query {
-    house: House
+    house(type: String!, term: String!): House
   }
 `;
 
-const demoHouse = {
-  uri: "https://data.oireachtas.ie/ie/oireachtas/house/dail/33"
-};
-
-const resolvers = {
+const resolvers: IResolvers = {
   Query: {
-    house: () => demoHouse
+    house: async (_, { type, term }, { dataSources }) => {
+      return dataSources.oireachtasAPI.getHouse(type, term);
+    }
   }
 };
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  dataSources: () => ({ oireachtasAPI: new OireachtasAPI() })
 });
 
 server.listen().then(({ url }) => {
