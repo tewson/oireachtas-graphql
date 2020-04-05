@@ -7,11 +7,20 @@ const typeDefs = gql`
   type House {
     uri: String
     members: [Member]
+    votes: [Vote]
   }
 
   type Member {
     uri: String
     fullName: String
+  }
+
+  type VoteSubject {
+    showAs: String
+  }
+
+  type Vote {
+    subject: VoteSubject
   }
 
   type Query {
@@ -28,6 +37,9 @@ const resolvers: IResolvers = {
   House: {
     members: async ({ uri: houseUri }, _, { dataSources }) => {
       return dataSources.oireachtasAPI.getMembers({ houseUri });
+    },
+    votes: async ({ uri: houseUri }, _, { dataSources }) => {
+      return dataSources.oireachtasAPI.getVotes({ houseUri });
     }
   }
 };
