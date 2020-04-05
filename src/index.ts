@@ -1,7 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import { ApolloServer, gql } from "apollo-server";
 
-import { OireachtasAPI } from "./OireachtasAPI";
+import { OireachtasAPI } from "./oireachtas-api";
 
 const typeDefs = gql`
   type House {
