@@ -35,11 +35,11 @@ const resolvers: IResolvers = {
     }
   },
   House: {
-    members: async ({ uri: houseUri }, _, { dataSources }) => {
-      return dataSources.oireachtasAPI.getMembers({ houseUri });
+    members: async ({ uri: houseURI }, _, { dataSources }) => {
+      return dataSources.oireachtasAPI.getMembers({ houseURI });
     },
-    votes: async ({ uri: houseUri }, _, { dataSources }) => {
-      return dataSources.oireachtasAPI.getVotes({ houseUri });
+    votes: async ({ uri: houseURI }, _, { dataSources }) => {
+      return dataSources.oireachtasAPI.getVotes({ houseURI });
     }
   }
 };

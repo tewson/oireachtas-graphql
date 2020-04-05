@@ -50,7 +50,7 @@ interface IRawMemberAPIResponse {
 }
 
 interface IBaseEntityByHouseAPIParams {
-  houseUri: String;
+  houseURI: String;
 }
 
 interface IGetMembersParams extends IBaseEntityByHouseAPIParams {}
@@ -77,18 +77,18 @@ export class OireachtasAPI extends RESTDataSource {
     return results[0]?.house;
   }
 
-  async getMembers({ houseUri }: IGetMembersParams) {
+  async getMembers({ houseURI }: IGetMembersParams) {
     const { results = [] } = await this.get<IRawMemberAPIResponse>("members", {
-      chamber_id: houseUri,
+      chamber_id: houseURI,
       limit: 200
     });
 
     return results.map(result => result.member);
   }
 
-  async getVotes({ houseUri, limit = 10000 }: IGetVotesParams) {
+  async getVotes({ houseURI, limit = 10000 }: IGetVotesParams) {
     const { results = [] } = await this.get<IRawVoteAPIResponse>("divisions", {
-      chamber_id: houseUri,
+      chamber_id: houseURI,
       limit
     });
 
