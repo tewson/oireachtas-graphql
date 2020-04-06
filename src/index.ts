@@ -1,7 +1,7 @@
-import { IResolvers } from "graphql-tools";
+import { IResolvers, IResolverObject, IFieldResolver } from "graphql-tools";
 import { ApolloServer, gql } from "apollo-server";
 
-import { OireachtasAPI } from "./oireachtas-api";
+import { IHouse, OireachtasAPI } from "./oireachtas-api";
 
 const typeDefs = gql`
   type House {
@@ -28,20 +28,53 @@ const typeDefs = gql`
   }
 `;
 
+interface IResolverContext {
+  dataSources: {
+    oireachtasAPI: OireachtasAPI;
+  };
+}
+
+interface IHouseQueryArgs {
+  type: String;
+  term: String;
+}
+
+const house: IFieldResolver<{}, IResolverContext, IHouseQueryArgs> = async (
+  _,
+  { type, term },
+  { dataSources }
+) => {
+  return dataSources.oireachtasAPI.getHouse(type, term);
+};
+
+const Query: IResolverObject = {
+  house
+};
+
+const houseMembers: IFieldResolver<IHouse, IResolverContext> = async (
+  { uri: houseURI },
+  _,
+  { dataSources }
+) => {
+  return dataSources.oireachtasAPI.getMembers({ houseURI });
+};
+
+const houseVotes: IFieldResolver<IHouse, IResolverContext> = async (
+  { uri: houseURI },
+  __,
+  { dataSources }
+) => {
+  return dataSources.oireachtasAPI.getVotes({ houseURI });
+};
+
+const House: IResolverObject = {
+  members: houseMembers,
+  votes: houseVotes
+};
+
 const resolvers: IResolvers = {
-  Query: {
-    house: async (_, { type, term }, { dataSources }) => {
-      return dataSources.oireachtasAPI.getHouse(type, term);
-    }
-  },
-  House: {
-    members: async ({ uri: houseURI }, _, { dataSources }) => {
-      return dataSources.oireachtasAPI.getMembers({ houseURI });
-    },
-    votes: async ({ uri: houseURI }, _, { dataSources }) => {
-      return dataSources.oireachtasAPI.getVotes({ houseURI });
-    }
-  }
+  Query,
+  House
 };
 
 const server = new ApolloServer({

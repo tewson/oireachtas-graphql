@@ -29,7 +29,7 @@ interface IVoteAPIResult {
 }
 
 export interface IGetVotesParams extends IBaseEntityByHouseAPIParams {
-  limit: Number;
+  limit?: Number;
 }
 
 export interface IRawVoteAPIResponse {
