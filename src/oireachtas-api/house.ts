@@ -3,9 +3,7 @@ interface IHouse {
 }
 
 interface IHouseAPIResult {
-  house: {
-    uri: String;
-  };
+  house: IHouse;
 }
 
 export interface IRawHouseAPIResponse {
