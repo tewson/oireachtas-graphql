@@ -1,67 +1,8 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
-interface IHouseAPIResult {
-  house: {
-    uri: String;
-  };
-}
-
-interface IMemberAPIResult {
-  member: {
-    uri: String;
-    fullName: String;
-  };
-}
-
-interface IVoteTallyMemberWrapper {
-  member: {
-    memberCode: String;
-  };
-}
-
-interface IVoteTally {
-  showAs: String;
-  members: IVoteTallyMemberWrapper[];
-  tally: Number;
-}
-
-interface IVoteAPIResult {
-  division: {
-    subject: {
-      showAs: String;
-    };
-    tallies: {
-      staonVotes: IVoteTally;
-      taVotes: IVoteTally;
-      nilVotes: IVoteTally;
-    };
-    debate: {
-      showAs: String;
-    };
-  };
-}
-
-interface IRawHouseAPIResponse {
-  results: IHouseAPIResult[];
-}
-
-interface IRawMemberAPIResponse {
-  results: IMemberAPIResult[];
-}
-
-interface IBaseEntityByHouseAPIParams {
-  houseURI: String;
-}
-
-interface IGetMembersParams extends IBaseEntityByHouseAPIParams {}
-
-interface IGetVotesParams extends IBaseEntityByHouseAPIParams {
-  limit: Number;
-}
-
-interface IRawVoteAPIResponse {
-  results: IVoteAPIResult[];
-}
+import { IRawHouseAPIResponse } from "./house";
+import { IGetMembersParams, IRawMemberAPIResponse } from "./member";
+import { IGetVotesParams, IRawVoteAPIResponse } from "./vote";
 
 export class OireachtasAPI extends RESTDataSource {
   constructor() {
