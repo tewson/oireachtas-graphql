@@ -26,6 +26,7 @@ const typeDefs = gql`
   type Vote {
     subject: VoteSubject
     tallies: VoteTallies
+    house: House
   }
 
   type House {
