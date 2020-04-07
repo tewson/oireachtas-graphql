@@ -4,12 +4,6 @@ import { resolvers } from "./resolvers";
 import { OireachtasAPI } from "./oireachtas-api";
 
 const typeDefs = gql`
-  type House {
-    uri: String
-    members: [Member]
-    votes: [Vote]
-  }
-
   type Member {
     uri: String
     fullName: String
@@ -32,6 +26,12 @@ const typeDefs = gql`
   type Vote {
     subject: VoteSubject
     tallies: VoteTallies
+  }
+
+  type House {
+    uri: String
+    members: [Member]
+    votes: [Vote]
   }
 
   type Query {
