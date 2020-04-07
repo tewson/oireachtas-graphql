@@ -15,6 +15,7 @@ const typeDefs = gql`
 
   type VoteTally {
     tally: Int
+    members: [Member]
   }
 
   type VoteTallies {

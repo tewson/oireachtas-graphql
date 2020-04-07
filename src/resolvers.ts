@@ -46,7 +46,41 @@ const House: IResolverObject = {
   votes: houseVotes
 };
 
+const expandTallyMembers = (members: any, tallyMembers: any) =>
+  (members as any[]).filter(member =>
+    (tallyMembers as any[]).some(
+      voteMemberWrapper => voteMemberWrapper.member.uri === member.uri
+    )
+  );
+
+const voteTallies: IFieldResolver<any, IResolverContext> = async (
+  vote,
+  _,
+  { dataSources }
+) => {
+  const members = await dataSources.oireachtasAPI.getMembers({
+    houseURI: vote.house.uri
+  });
+
+  const tallies = Object.keys(vote.tallies).reduce((tallies, tallyType) => {
+    return {
+      ...tallies,
+      [tallyType]: {
+        ...vote.tallies[tallyType],
+        members: expandTallyMembers(members, vote.tallies[tallyType].members)
+      }
+    };
+  }, {});
+
+  return tallies;
+};
+
+const Vote: IResolverObject = {
+  tallies: voteTallies
+};
+
 export const resolvers: IResolvers = {
   Query,
-  House
+  House,
+  Vote
 };
