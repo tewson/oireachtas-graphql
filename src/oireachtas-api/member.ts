@@ -1,6 +1,6 @@
 import { IBaseEntityByHouseAPIParams } from "./common";
 
-interface IMemberAPIResult {
+export interface IMemberAPIResult {
   member: {
     uri: String;
     fullName: String;
