@@ -19,8 +19,19 @@ const typeDefs = gql`
     showAs: String
   }
 
+  type VoteTally {
+    tally: Int
+  }
+
+  type VoteTallies {
+    staonVotes: VoteTally
+    taVotes: VoteTally
+    nilVotes: VoteTally
+  }
+
   type Vote {
     subject: VoteSubject
+    tallies: VoteTallies
   }
 
   type Query {
