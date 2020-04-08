@@ -1,11 +1,7 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse, IMemberWrapper } from "../oireachtas-api";
+import { IHouse, IMemberWrapper, IMember } from "../oireachtas-api";
 import { IResolverContext } from "./common";
-
-interface IMember {
-  uri: String;
-}
 
 interface IVoteTally {
   members: IMemberWrapper[];
