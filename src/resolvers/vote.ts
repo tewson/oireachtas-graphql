@@ -1,6 +1,6 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse, IMemberAPIResult } from "../oireachtas-api";
+import { IHouse, IMemberWrapper } from "../oireachtas-api";
 import { IResolverContext } from "./common";
 
 interface IMember {
@@ -8,7 +8,7 @@ interface IMember {
 }
 
 interface IVoteTally {
-  members: IMemberAPIResult[];
+  members: IMemberWrapper[];
 }
 
 enum TallyType {
@@ -26,7 +26,7 @@ interface IVote {
 
 const expandTallyMembers = (
   members: IMember[],
-  tallyMembers: IMemberAPIResult[]
+  tallyMembers: IMemberWrapper[]
 ) => {
   return members.filter(member =>
     tallyMembers.some(

@@ -1,6 +1,6 @@
 import { IBaseEntityByHouseAPIParams } from "./common";
 
-export interface IMemberAPIResult {
+export interface IMemberWrapper {
   member: {
     uri: String;
     fullName: String;
@@ -8,7 +8,7 @@ export interface IMemberAPIResult {
 }
 
 export interface IRawMemberAPIResponse {
-  results: IMemberAPIResult[];
+  results: IMemberWrapper[];
 }
 
 export interface IGetMembersParams extends IBaseEntityByHouseAPIParams {}
