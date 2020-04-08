@@ -1,9 +1,5 @@
+import { IMember } from "../models";
 import { IBaseEntityByHouseAPIParams } from "./common";
-
-interface IMember {
-  uri: String;
-  fullName: String;
-}
 
 interface IMemberWrapper {
   member: IMember;

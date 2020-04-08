@@ -1,26 +1,8 @@
-import { IVoteTallyMemberWrapper } from "../models";
+import { IVote } from "../models";
 import { IBaseEntityByHouseAPIParams } from "./common";
 
-interface IVoteTally {
-  showAs: String;
-  members: IVoteTallyMemberWrapper[];
-  tally: Number;
-}
-
 interface IVoteAPIResult {
-  division: {
-    subject: {
-      showAs: String;
-    };
-    tallies: {
-      staonVotes: IVoteTally;
-      taVotes: IVoteTally;
-      nilVotes: IVoteTally;
-    };
-    debate: {
-      showAs: String;
-    };
-  };
+  division: IVote;
 }
 
 export interface IGetVotesParams extends IBaseEntityByHouseAPIParams {

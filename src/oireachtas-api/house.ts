@@ -1,6 +1,4 @@
-interface IHouse {
-  uri: String;
-}
+import { IHouse } from "../models";
 
 interface IHouseAPIResult {
   house: IHouse;

@@ -1,6 +1,5 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
-import { IMember } from "../models";
 import { IRawHouseAPIResponse } from "./house";
 import { IGetMembersParams, IRawMemberAPIResponse } from "./member";
 import { IGetVotesParams, IRawVoteAPIResponse } from "./vote";
@@ -25,7 +24,7 @@ export class OireachtasAPI extends RESTDataSource {
       limit: 200
     });
 
-    return results.map(result => result.member as IMember);
+    return results.map(result => result.member);
   }
 
   async getVotes({ houseURI, limit = 10000 }: IGetVotesParams) {
