@@ -3,27 +3,7 @@ import { IResolvers, IResolverObject, IFieldResolver } from "graphql-tools";
 import { IHouse, IMemberAPIResult } from "../oireachtas-api";
 import { IResolverContext } from "./common";
 import { Query } from "./Query";
-
-const houseMembers: IFieldResolver<IHouse, IResolverContext> = async (
-  { uri: houseURI },
-  _,
-  { dataSources }
-) => {
-  return dataSources.oireachtasAPI.getMembers({ houseURI });
-};
-
-const houseVotes: IFieldResolver<IHouse, IResolverContext> = async (
-  { uri: houseURI },
-  __,
-  { dataSources }
-) => {
-  return dataSources.oireachtasAPI.getVotes({ houseURI });
-};
-
-const House: IResolverObject = {
-  members: houseMembers,
-  votes: houseVotes
-};
+import { House } from "./House";
 
 interface IMember {
   uri: String;
