@@ -4,8 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "build-watch": "tsc -w",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "build-watch": "npm run clean && tsc -w",
     "start": "node dist/index.js",
     "dev": "concurrently --kill-others \"npm:build-watch\" \"nodemon dist/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +20,7 @@
   "devDependencies": {
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.2",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   }
 }
