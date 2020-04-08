@@ -1,6 +1,6 @@
 import { IResolvers, IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse, IMemberAPIResult, OireachtasAPI } from "./oireachtas-api";
+import { IHouse, IMemberAPIResult, OireachtasAPI } from "../oireachtas-api";
 
 interface IResolverContext {
   dataSources: {
