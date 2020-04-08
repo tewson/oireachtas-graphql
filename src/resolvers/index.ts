@@ -1,29 +1,8 @@
 import { IResolvers, IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse, IMemberAPIResult, OireachtasAPI } from "../oireachtas-api";
-
-interface IResolverContext {
-  dataSources: {
-    oireachtasAPI: OireachtasAPI;
-  };
-}
-
-interface IHouseQueryArgs {
-  type: String;
-  term: String;
-}
-
-const house: IFieldResolver<{}, IResolverContext, IHouseQueryArgs> = async (
-  _,
-  { type, term },
-  { dataSources }
-) => {
-  return dataSources.oireachtasAPI.getHouse(type, term);
-};
-
-const Query: IResolverObject = {
-  house
-};
+import { IHouse, IMemberAPIResult } from "../oireachtas-api";
+import { IResolverContext } from "./common";
+import { Query } from "./Query";
 
 const houseMembers: IFieldResolver<IHouse, IResolverContext> = async (
   { uri: houseURI },
