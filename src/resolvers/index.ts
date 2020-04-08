@@ -1,8 +1,8 @@
 import { IResolvers } from "graphql-tools";
 
-import { Query } from "./Query";
-import { House } from "./House";
-import { Vote } from "./Vote";
+import { Query } from "./query";
+import { House } from "./house";
+import { Vote } from "./vote";
 
 export const resolvers: IResolvers = {
   Query,

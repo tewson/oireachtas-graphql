@@ -1,3 +1,3 @@
 export * from "./house";
 export * from "./member";
-export * from "./OireachtasAPI";
+export * from "./oireachtas-api";
