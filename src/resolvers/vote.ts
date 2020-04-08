@@ -1,27 +1,12 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse } from "../oireachtas-api";
-import { IMember } from "../models/member";
+import { IMember, IVote, IVoteTallyMemberWrapper, TallyType } from "../models";
 import { IResolverContext } from "./common";
 
-interface IVoteTally {
-  members: IMember[];
-}
-
-enum TallyType {
-  Staon = "staonVotes",
-  Ta = "taVotes",
-  Nil = "nilVotes"
-}
-
-interface IVote {
-  house: IHouse;
-  tallies: {
-    [key in TallyType]: IVoteTally;
-  };
-}
-
-const expandTallyMembers = (members: IMember[], tallyMembers: any[]) => {
+const expandTallyMembers = (
+  members: IMember[],
+  tallyMembers: IVoteTallyMemberWrapper[]
+) => {
   return members.filter(member =>
     tallyMembers.some(
       voteMemberWrapper => voteMemberWrapper.member.uri === member.uri
@@ -38,15 +23,12 @@ const voteTallies: IFieldResolver<IVote, IResolverContext> = async (
     houseURI: vote.house.uri
   });
 
-  const tallies = Object.keys(vote.tallies).reduce((tallies, tallyType) => {
+  const tallies = Object.values(TallyType).reduce((tallies, tallyType) => {
     return {
       ...tallies,
       [tallyType]: {
-        ...vote.tallies[tallyType as TallyType],
-        members: expandTallyMembers(
-          members,
-          vote.tallies[tallyType as TallyType].members
-        )
+        ...vote.tallies[tallyType],
+        members: expandTallyMembers(members, vote.tallies[tallyType].members)
       }
     };
   }, {});

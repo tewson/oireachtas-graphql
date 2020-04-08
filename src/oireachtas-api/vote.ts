@@ -1,10 +1,5 @@
+import { IVoteTallyMemberWrapper } from "../models";
 import { IBaseEntityByHouseAPIParams } from "./common";
-
-interface IVoteTallyMemberWrapper {
-  member: {
-    memberCode: String;
-  };
-}
 
 interface IVoteTally {
   showAs: String;
