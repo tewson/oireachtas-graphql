@@ -1,4 +1,4 @@
-export interface IHouse {
+interface IHouse {
   uri: String;
 }
 

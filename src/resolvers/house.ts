@@ -1,6 +1,6 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse } from "../oireachtas-api";
+import { IHouse } from "../models";
 import { IResolverContext } from "./common";
 
 const houseMembers: IFieldResolver<IHouse, IResolverContext> = async (
