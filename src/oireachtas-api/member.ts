@@ -1,11 +1,11 @@
 import { IBaseEntityByHouseAPIParams } from "./common";
 
-export interface IMember {
+interface IMember {
   uri: String;
   fullName: String;
 }
 
-export interface IMemberWrapper {
+interface IMemberWrapper {
   member: IMember;
 }
 
