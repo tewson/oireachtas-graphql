@@ -3,7 +3,7 @@ import { IResolverObject, IFieldResolver } from "graphql-tools";
 import { IHouse } from "../models";
 import { IResolverContext } from "./common";
 
-const houseMembers: IFieldResolver<IHouse, IResolverContext> = async (
+const resolveMembers: IFieldResolver<IHouse, IResolverContext> = async (
   { uri: houseURI },
   _,
   { dataSources }
@@ -11,7 +11,7 @@ const houseMembers: IFieldResolver<IHouse, IResolverContext> = async (
   return dataSources.oireachtasAPI.getMembers({ houseURI });
 };
 
-const houseVotes: IFieldResolver<IHouse, IResolverContext> = async (
+const resolveVotes: IFieldResolver<IHouse, IResolverContext> = async (
   { uri: houseURI },
   __,
   { dataSources }
@@ -20,6 +20,6 @@ const houseVotes: IFieldResolver<IHouse, IResolverContext> = async (
 };
 
 export const House: IResolverObject = {
-  members: houseMembers,
-  votes: houseVotes
+  members: resolveMembers,
+  votes: resolveVotes
 };

@@ -14,7 +14,7 @@ const expandTallyMembers = (
   );
 };
 
-const voteTallies: IFieldResolver<IVote, IResolverContext> = async (
+const resolveTallies: IFieldResolver<IVote, IResolverContext> = async (
   vote,
   _,
   { dataSources }
@@ -37,5 +37,5 @@ const voteTallies: IFieldResolver<IVote, IResolverContext> = async (
 };
 
 export const Vote: IResolverObject = {
-  tallies: voteTallies
+  tallies: resolveTallies
 };

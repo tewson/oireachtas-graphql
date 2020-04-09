@@ -7,14 +7,14 @@ interface IHouseQueryArgs {
   term: String;
 }
 
-const house: IFieldResolver<{}, IResolverContext, IHouseQueryArgs> = async (
-  _,
-  { type, term },
-  { dataSources }
-) => {
+const resolveHouse: IFieldResolver<
+  {},
+  IResolverContext,
+  IHouseQueryArgs
+> = async (_, { type, term }, { dataSources }) => {
   return dataSources.oireachtasAPI.getHouse(type, term);
 };
 
 export const Query: IResolverObject = {
-  house
+  house: resolveHouse
 };
