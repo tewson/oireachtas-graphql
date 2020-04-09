@@ -3,6 +3,7 @@ import { gql } from "apollo-server";
 export const typeDefs = gql`
   type Member {
     uri: String
+    memberCode: String
     fullName: String
   }
 
