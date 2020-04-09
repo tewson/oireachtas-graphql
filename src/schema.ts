@@ -27,6 +27,11 @@ export const typeDefs = gql`
     house: House
   }
 
+  enum HouseType {
+    dail
+    seanad
+  }
+
   type House {
     uri: String
     members: [Member]
@@ -34,6 +39,6 @@ export const typeDefs = gql`
   }
 
   type Query {
-    house(type: String!, term: String!): House
+    house(type: HouseType!, term: String!): House
   }
 `;
