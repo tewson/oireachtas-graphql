@@ -32,8 +32,16 @@ export const typeDefs = gql`
     seanad
   }
 
+  type HouseDateRange {
+    start: String
+    end: String
+  }
+
   type House {
     uri: String
+    type: HouseType
+    term: String
+    dateRange: HouseDateRange
     members: [Member]
     votes: [Vote]
   }
