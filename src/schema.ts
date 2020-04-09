@@ -41,6 +41,8 @@ export const typeDefs = gql`
     uri: String
     type: HouseType
     term: String
+    showAs: String
+    seats: Int
     dateRange: HouseDateRange
     members: [Member]
     votes: [Vote]
