@@ -11,7 +11,7 @@ import { ResolverContext } from "./common";
 const expandTallyMembers = (
   members: Member[],
   tallyMembers: VoteTallyMemberWrapper[]
-) => {
+): Member[] => {
   return members.filter(member =>
     tallyMembers.some(
       voteMemberWrapper => voteMemberWrapper.member.uri === member.uri
