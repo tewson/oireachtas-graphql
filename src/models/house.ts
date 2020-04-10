@@ -5,7 +5,7 @@ import { Vote } from "./vote";
 export interface House extends EntityWithShowAs {
   houseType: string;
   houseNo: string;
-  seats: Number;
+  seats: number;
   dateRange: DateRange;
   members: Member[];
   votes: Vote;
