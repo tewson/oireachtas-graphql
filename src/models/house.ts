@@ -1,11 +1,10 @@
+import { IEntityWithShowAs } from "./common";
 import { IMember } from "./member";
 import { IVote } from "./vote";
 
-export interface IHouse {
-  uri: string;
+export interface IHouse extends IEntityWithShowAs {
   houseType: string;
   houseNo: string;
-  showAs: string;
   seats: Number;
   dateRange: {
     start: string;

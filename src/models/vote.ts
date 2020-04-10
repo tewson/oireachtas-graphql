@@ -1,3 +1,4 @@
+import { IEntityWithShowAs } from "./common";
 import { IHouse } from "./house";
 
 export enum TallyType {
@@ -6,12 +7,12 @@ export enum TallyType {
   Nil = "nilVotes"
 }
 
+interface IVoteTallyMember extends IEntityWithShowAs {
+  memberCode: string;
+}
+
 export interface IVoteTallyMemberWrapper {
-  member: {
-    memberCode: string;
-    uri: string;
-    showAs: string;
-  };
+  member: IVoteTallyMember;
 }
 
 interface IVoteTally {

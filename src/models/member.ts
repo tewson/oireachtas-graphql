@@ -1,15 +1,13 @@
-interface IMembershipHouse {
-  uri: string;
-}
+import { IEntity, IEntityWithShowAs } from "./common";
+
+interface IMembershipHouse extends IEntity {}
 
 enum RepresentType {
   Contituency = "constituency",
   Panel = "panel"
 }
 
-interface IRepresent {
-  uri: string;
-  showAs: string;
+interface IRepresent extends IEntityWithShowAs {
   representType: RepresentType;
   representCode: string;
 }
@@ -19,10 +17,7 @@ interface IRepresentWrapper {
 }
 
 interface IOffice {
-  officeName: {
-    uri: string;
-    showAs: string;
-  };
+  officeName: IEntityWithShowAs;
   dateRange: {
     start: string;
     end: string;
@@ -33,8 +28,7 @@ interface IOfficeWrapper {
   office: IOffice;
 }
 
-export interface IMembership {
-  uri: string;
+export interface IMembership extends IEntity {
   house: IMembershipHouse;
   represents: IRepresentWrapper[];
   dateRange: {
@@ -48,8 +42,7 @@ export interface IMembershipWrapper {
   membership: IMembership;
 }
 
-export interface IMember {
-  uri: string;
+export interface IMember extends IEntity {
   memberCode: string;
   fullName: string;
   memberships: IMembershipWrapper[];
