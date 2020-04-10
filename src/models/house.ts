@@ -3,13 +3,13 @@ import { IVote } from "./vote";
 
 export interface IHouse {
   uri: string;
-  houseType: String;
-  houseNo: String;
-  showAs: String;
+  houseType: string;
+  houseNo: string;
+  showAs: string;
   seats: Number;
   dateRange: {
-    start: String;
-    end: String;
+    start: string;
+    end: string;
   };
   members: IMember[];
   votes: IVote;

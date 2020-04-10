@@ -1,3 +1,3 @@
 export interface IBaseEntityByHouseAPIParams {
-  houseURI: String;
+  houseURI: string;
 }

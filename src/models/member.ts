@@ -49,8 +49,8 @@ export interface IMembershipWrapper {
 }
 
 export interface IMember {
-  uri: String;
-  memberCode: String;
-  fullName: String;
+  uri: string;
+  memberCode: string;
+  fullName: string;
   memberships: IMembershipWrapper[];
 }

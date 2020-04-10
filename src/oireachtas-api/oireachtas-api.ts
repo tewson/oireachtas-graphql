@@ -18,7 +18,7 @@ export class OireachtasAPI extends RESTDataSource {
     return results[0]?.house;
   }
 
-  async getHouse(type: String, term: String) {
+  async getHouse(type: string, term: string) {
     return this.getHouseByChamberId(
       `https://data.oireachtas.ie/ie/oireachtas/house/${type}/${term}`
     );

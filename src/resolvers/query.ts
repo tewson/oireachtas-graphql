@@ -3,8 +3,8 @@ import { IResolverObject, IFieldResolver } from "graphql-tools";
 import { IResolverContext } from "./common";
 
 interface IHouseQueryArgs {
-  type: String;
-  term: String;
+  type: string;
+  term: string;
 }
 
 const resolveHouse: IFieldResolver<
