@@ -10,12 +10,18 @@ export class OireachtasAPI extends RESTDataSource {
     this.baseURL = "https://api.oireachtas.ie/v1/";
   }
 
-  async getHouse(type: String, term: String) {
+  async getHouseByChamberId(chamberId: string) {
     const { results = [] } = await this.get<IRawHouseAPIResponse>("houses", {
-      chamber_id: `https://data.oireachtas.ie/ie/oireachtas/house/${type}/${term}`
+      chamber_id: chamberId
     });
 
     return results[0]?.house;
+  }
+
+  async getHouse(type: String, term: String) {
+    return this.getHouseByChamberId(
+      `https://data.oireachtas.ie/ie/oireachtas/house/${type}/${term}`
+    );
   }
 
   async getMembers({ houseURI }: IGetMembersParams) {
