@@ -1,14 +1,14 @@
-import { IVote } from "../models";
-import { IBaseEntityByHouseAPIParams } from "./common";
+import { Vote } from "../models";
+import { BaseEntityByHouseAPIParams } from "./common";
 
-interface IVoteAPIResult {
-  division: IVote;
+interface VoteAPIResult {
+  division: Vote;
 }
 
-export interface IGetVotesParams extends IBaseEntityByHouseAPIParams {
+export interface GetVotesParams extends BaseEntityByHouseAPIParams {
   limit?: Number;
 }
 
-export interface IRawVoteAPIResponse {
-  results: IVoteAPIResult[];
+export interface RawVoteAPIResponse {
+  results: VoteAPIResult[];
 }

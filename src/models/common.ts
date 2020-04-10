@@ -1,12 +1,12 @@
-export interface IEntity {
+export interface Entity {
   uri: string;
 }
 
-export interface IEntityWithShowAs extends IEntity {
+export interface EntityWithShowAs extends Entity {
   showAs: string;
 }
 
-export interface IDateRange {
+export interface DateRange {
   start: string;
   end: string;
 }

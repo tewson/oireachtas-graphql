@@ -1,12 +1,12 @@
-import { IMember } from "../models";
-import { IBaseEntityByHouseAPIParams } from "./common";
+import { Member } from "../models";
+import { BaseEntityByHouseAPIParams } from "./common";
 
-interface IMemberWrapper {
-  member: IMember;
+interface MemberWrapper {
+  member: Member;
 }
 
-export interface IRawMemberAPIResponse {
-  results: IMemberWrapper[];
+export interface RawMemberAPIResponse {
+  results: MemberWrapper[];
 }
 
-export interface IGetMembersParams extends IBaseEntityByHouseAPIParams {}
+export interface GetMembersParams extends BaseEntityByHouseAPIParams {}

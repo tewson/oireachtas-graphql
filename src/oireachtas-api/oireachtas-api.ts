@@ -1,8 +1,8 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
-import { IRawHouseAPIResponse } from "./house";
-import { IGetMembersParams, IRawMemberAPIResponse } from "./member";
-import { IGetVotesParams, IRawVoteAPIResponse } from "./vote";
+import { RawHouseAPIResponse } from "./house";
+import { GetMembersParams, RawMemberAPIResponse } from "./member";
+import { GetVotesParams, RawVoteAPIResponse } from "./vote";
 
 export class OireachtasAPI extends RESTDataSource {
   constructor() {
@@ -11,7 +11,7 @@ export class OireachtasAPI extends RESTDataSource {
   }
 
   async getHouseByChamberId(chamberId: string) {
-    const { results = [] } = await this.get<IRawHouseAPIResponse>("houses", {
+    const { results = [] } = await this.get<RawHouseAPIResponse>("houses", {
       chamber_id: chamberId
     });
 
@@ -25,7 +25,7 @@ export class OireachtasAPI extends RESTDataSource {
   }
 
   async getMemberByURI(uri: string) {
-    const { results = [] } = await this.get<IRawMemberAPIResponse>("members", {
+    const { results = [] } = await this.get<RawMemberAPIResponse>("members", {
       member_id: uri,
       limit: 1
     });
@@ -33,8 +33,8 @@ export class OireachtasAPI extends RESTDataSource {
     return results.map(result => result.member)[0];
   }
 
-  async getMembers({ houseURI }: IGetMembersParams) {
-    const { results = [] } = await this.get<IRawMemberAPIResponse>("members", {
+  async getMembers({ houseURI }: GetMembersParams) {
+    const { results = [] } = await this.get<RawMemberAPIResponse>("members", {
       chamber_id: houseURI,
       limit: 200
     });
@@ -42,8 +42,8 @@ export class OireachtasAPI extends RESTDataSource {
     return results.map(result => result.member);
   }
 
-  async getVotes({ houseURI, limit = 10000 }: IGetVotesParams) {
-    const { results = [] } = await this.get<IRawVoteAPIResponse>("divisions", {
+  async getVotes({ houseURI, limit = 10000 }: GetVotesParams) {
+    const { results = [] } = await this.get<RawVoteAPIResponse>("divisions", {
       chamber_id: houseURI,
       limit
     });

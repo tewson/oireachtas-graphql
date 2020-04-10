@@ -1,48 +1,48 @@
-import { IEntity, IEntityWithShowAs, IDateRange } from "./common";
+import { Entity, EntityWithShowAs, DateRange } from "./common";
 
-interface IMembershipHouse extends IEntity {}
+interface MembershipHouse extends Entity {}
 
 enum RepresentType {
   Contituency = "constituency",
   Panel = "panel"
 }
 
-interface IRepresent extends IEntityWithShowAs {
+interface Represent extends EntityWithShowAs {
   representType: RepresentType;
   representCode: string;
 }
 
-interface IRepresentWrapper {
-  represent: IRepresent;
+interface RepresentWrapper {
+  represent: Represent;
 }
 
-interface IPartyWrapper {
+interface PartyWrapper {
   party: any;
 }
 
-interface IOffice {
-  officeName: IEntityWithShowAs;
-  dateRange: IDateRange;
+interface Office {
+  officeName: EntityWithShowAs;
+  dateRange: DateRange;
 }
 
-interface IOfficeWrapper {
-  office: IOffice;
+interface OfficeWrapper {
+  office: Office;
 }
 
-export interface IMembership extends IEntity {
-  house: IMembershipHouse;
-  represents: IRepresentWrapper[];
-  dateRange: IDateRange;
-  parties: IPartyWrapper[];
-  offices: IOfficeWrapper[];
+export interface Membership extends Entity {
+  house: MembershipHouse;
+  represents: RepresentWrapper[];
+  dateRange: DateRange;
+  parties: PartyWrapper[];
+  offices: OfficeWrapper[];
 }
 
-export interface IMembershipWrapper {
-  membership: IMembership;
+export interface MembershipWrapper {
+  membership: Membership;
 }
 
-export interface IMember extends IEntity {
+export interface Member extends Entity {
   memberCode: string;
   fullName: string;
-  memberships: IMembershipWrapper[];
+  memberships: MembershipWrapper[];
 }

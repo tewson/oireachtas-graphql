@@ -1,5 +1,5 @@
-import { IEntityWithShowAs } from "./common";
-import { IHouse } from "./house";
+import { EntityWithShowAs } from "./common";
+import { House } from "./house";
 
 export enum TallyType {
   Staon = "staonVotes",
@@ -7,21 +7,21 @@ export enum TallyType {
   Nil = "nilVotes"
 }
 
-interface IVoteTallyMember extends IEntityWithShowAs {
+interface VoteTallyMember extends EntityWithShowAs {
   memberCode: string;
 }
 
-export interface IVoteTallyMemberWrapper {
-  member: IVoteTallyMember;
+export interface VoteTallyMemberWrapper {
+  member: VoteTallyMember;
 }
 
-interface IVoteTally {
-  members: IVoteTallyMemberWrapper[];
+interface VoteTally {
+  members: VoteTallyMemberWrapper[];
 }
 
-export interface IVote {
-  house: IHouse;
+export interface Vote {
+  house: House;
   tallies: {
-    [key in TallyType]: IVoteTally;
+    [key in TallyType]: VoteTally;
   };
 }

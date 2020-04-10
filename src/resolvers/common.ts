@@ -1,6 +1,6 @@
 import { OireachtasAPI } from "../oireachtas-api";
 
-export interface IResolverContext {
+export interface ResolverContext {
   dataSources: {
     oireachtasAPI: OireachtasAPI;
   };

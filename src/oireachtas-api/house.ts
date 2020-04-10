@@ -1,9 +1,9 @@
-import { IHouse } from "../models";
+import { House } from "../models";
 
-interface IHouseAPIResult {
-  house: IHouse;
+interface HouseAPIResult {
+  house: House;
 }
 
-export interface IRawHouseAPIResponse {
-  results: IHouseAPIResult[];
+export interface RawHouseAPIResponse {
+  results: HouseAPIResult[];
 }

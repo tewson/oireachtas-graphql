@@ -1,28 +1,28 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IResolverContext } from "./common";
+import { ResolverContext } from "./common";
 
-interface IHouseQueryArgs {
+interface HouseQueryArgs {
   type: string;
   term: string;
 }
 
-interface IMemberQueryArgs {
+interface MemberQueryArgs {
   uri: string;
 }
 
 const resolveHouse: IFieldResolver<
   {},
-  IResolverContext,
-  IHouseQueryArgs
+  ResolverContext,
+  HouseQueryArgs
 > = async (_, { type, term }, { dataSources }) => {
   return dataSources.oireachtasAPI.getHouse(type, term);
 };
 
 const resolveMember: IFieldResolver<
   {},
-  IResolverContext,
-  IMemberQueryArgs
+  ResolverContext,
+  MemberQueryArgs
 > = async (_, { uri }, { dataSources }) => {
   return dataSources.oireachtasAPI.getMemberByURI(uri);
 };

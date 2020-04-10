@@ -1,12 +1,13 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IHouse } from "../models";
-import { IResolverContext } from "./common";
+import { House as HouseModel } from "../models";
+import { ResolverContext } from "./common";
 
-const resolveType: IFieldResolver<IHouse, {}> = ({ houseType }) => houseType;
-const resolveTerm: IFieldResolver<IHouse, {}> = ({ houseNo }) => houseNo;
+const resolveType: IFieldResolver<HouseModel, {}> = ({ houseType }) =>
+  houseType;
+const resolveTerm: IFieldResolver<HouseModel, {}> = ({ houseNo }) => houseNo;
 
-const resolveMembers: IFieldResolver<IHouse, IResolverContext> = async (
+const resolveMembers: IFieldResolver<HouseModel, ResolverContext> = async (
   { uri: houseURI },
   _,
   { dataSources }
@@ -14,10 +15,10 @@ const resolveMembers: IFieldResolver<IHouse, IResolverContext> = async (
   return dataSources.oireachtasAPI.getMembers({ houseURI });
 };
 
-const resolveDateRange: IFieldResolver<IHouse, {}> = ({ dateRange }) =>
+const resolveDateRange: IFieldResolver<HouseModel, {}> = ({ dateRange }) =>
   dateRange;
 
-const resolveVotes: IFieldResolver<IHouse, IResolverContext> = async (
+const resolveVotes: IFieldResolver<HouseModel, ResolverContext> = async (
   { uri: houseURI },
   __,
   { dataSources }

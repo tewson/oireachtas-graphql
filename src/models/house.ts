@@ -1,12 +1,12 @@
-import { IEntityWithShowAs, IDateRange } from "./common";
-import { IMember } from "./member";
-import { IVote } from "./vote";
+import { EntityWithShowAs, DateRange } from "./common";
+import { Member } from "./member";
+import { Vote } from "./vote";
 
-export interface IHouse extends IEntityWithShowAs {
+export interface House extends EntityWithShowAs {
   houseType: string;
   houseNo: string;
   seats: Number;
-  dateRange: IDateRange;
-  members: IMember[];
-  votes: IVote;
+  dateRange: DateRange;
+  members: Member[];
+  votes: Vote;
 }

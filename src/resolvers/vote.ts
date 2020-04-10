@@ -1,11 +1,16 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IMember, IVote, IVoteTallyMemberWrapper, TallyType } from "../models";
-import { IResolverContext } from "./common";
+import {
+  Member,
+  Vote as VoteModel,
+  VoteTallyMemberWrapper,
+  TallyType
+} from "../models";
+import { ResolverContext } from "./common";
 
 const expandTallyMembers = (
-  members: IMember[],
-  tallyMembers: IVoteTallyMemberWrapper[]
+  members: Member[],
+  tallyMembers: VoteTallyMemberWrapper[]
 ) => {
   return members.filter(member =>
     tallyMembers.some(
@@ -14,7 +19,7 @@ const expandTallyMembers = (
   );
 };
 
-const resolveTallies: IFieldResolver<IVote, IResolverContext> = async (
+const resolveTallies: IFieldResolver<VoteModel, ResolverContext> = async (
   vote,
   _,
   { dataSources }
@@ -36,7 +41,7 @@ const resolveTallies: IFieldResolver<IVote, IResolverContext> = async (
   return tallies;
 };
 
-const resolveHouse: IFieldResolver<IVote, IResolverContext> = async (
+const resolveHouse: IFieldResolver<VoteModel, ResolverContext> = async (
   { house },
   _,
   { dataSources }

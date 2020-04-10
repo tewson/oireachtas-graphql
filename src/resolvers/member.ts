@@ -1,13 +1,18 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import { IMember, IMembershipWrapper, IMembership, IHouse } from "../models";
-import { IResolverContext } from "./common";
+import {
+  Member as MemberModel,
+  MembershipWrapper,
+  Membership,
+  House
+} from "../models";
+import { ResolverContext } from "./common";
 
-interface IHousesByURI {
-  [uri: string]: IHouse;
+interface HousesByURI {
+  [uri: string]: House;
 }
 
-const resolveMemberships: IFieldResolver<IMember, IResolverContext> = async (
+const resolveMemberships: IFieldResolver<MemberModel, ResolverContext> = async (
   { memberships: membershipWrappers },
   _,
   { dataSources }
@@ -23,7 +28,7 @@ const resolveMemberships: IFieldResolver<IMember, IResolverContext> = async (
     dataSources.oireachtasAPI.getHouseByChamberId(houseURI)
   );
   const houses = await Promise.all(resolvedHousePromises);
-  const housesByURI = houses.reduce<IHousesByURI>(
+  const housesByURI = houses.reduce<HousesByURI>(
     (housesByURI, house) => ({
       ...housesByURI,
       [house.uri]: house
