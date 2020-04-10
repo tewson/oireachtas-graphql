@@ -18,6 +18,13 @@ export const typeDefs = gql`
     representCode: String
   }
 
+  type Party {
+    uri: String
+    showAs: String
+    partyCode: String
+    dateRange: DateRange
+  }
+
   type OfficeName {
     uri: String
     showAs: String
@@ -33,6 +40,7 @@ export const typeDefs = gql`
     house: House
     represents: [Represent]
     dateRange: DateRange
+    parties: [Party]
     offices: [Office]
   }
 

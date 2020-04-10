@@ -37,6 +37,9 @@ const resolveMemberships: IFieldResolver<IMember, IResolverContext> = async (
     represents: unwrappedMembership.represents.map(
       representWrapper => representWrapper.represent
     ),
+    parties: unwrappedMembership.parties.map(
+      partyWrapper => partyWrapper.party
+    ),
     offices: unwrappedMembership.offices.map(
       officeWrapper => officeWrapper.office
     )

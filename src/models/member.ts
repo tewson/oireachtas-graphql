@@ -16,6 +16,10 @@ interface IRepresentWrapper {
   represent: IRepresent;
 }
 
+interface IPartyWrapper {
+  party: any;
+}
+
 interface IOffice {
   officeName: IEntityWithShowAs;
   dateRange: IDateRange;
@@ -29,6 +33,7 @@ export interface IMembership extends IEntity {
   house: IMembershipHouse;
   represents: IRepresentWrapper[];
   dateRange: IDateRange;
+  parties: IPartyWrapper[];
   offices: IOfficeWrapper[];
 }
 
