@@ -1,3 +1,11 @@
+/* eslint @typescript-eslint/camelcase: [
+     "error",
+     {
+       allow: ["_id"]
+     }
+   ]
+ */
+
 import { RESTDataSource } from "apollo-datasource-rest";
 
 import { House, Member, Vote } from "../models";
