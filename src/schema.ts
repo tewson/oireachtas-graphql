@@ -1,10 +1,46 @@
 import { gql } from "apollo-server";
 
 export const typeDefs = gql`
+  type DateRange {
+    start: String
+    end: String
+  }
+
+  enum RepresentType {
+    constituency
+    panel
+  }
+
+  type Represent {
+    uri: String
+    showAs: String
+    representType: RepresentType
+    representCode: String
+  }
+
+  type OfficeName {
+    uri: String
+    showAs: String
+  }
+
+  type Office {
+    officeName: OfficeName
+    dateRange: DateRange
+  }
+
+  type Membership {
+    uri: String
+    house: House
+    represents: [Represent]
+    dateRange: DateRange
+    offices: [Office]
+  }
+
   type Member {
     uri: String
     memberCode: String
     fullName: String
+    memberships: [Membership]
   }
 
   type VoteSubject {
@@ -33,18 +69,13 @@ export const typeDefs = gql`
     seanad
   }
 
-  type HouseDateRange {
-    start: String
-    end: String
-  }
-
   type House {
     uri: String
     type: HouseType
     term: String
     showAs: String
     seats: Int
-    dateRange: HouseDateRange
+    dateRange: DateRange
     members: [Member]
     votes: [Vote]
   }

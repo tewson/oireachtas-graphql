@@ -2,7 +2,7 @@ import { IMember } from "./member";
 import { IVote } from "./vote";
 
 export interface IHouse {
-  uri: String;
+  uri: string;
   houseType: String;
   houseNo: String;
   showAs: String;
