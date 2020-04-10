@@ -24,6 +24,15 @@ export class OireachtasAPI extends RESTDataSource {
     );
   }
 
+  async getMemberByURI(uri: string) {
+    const { results = [] } = await this.get<IRawMemberAPIResponse>("members", {
+      member_id: uri,
+      limit: 1
+    });
+
+    return results.map(result => result.member)[0];
+  }
+
   async getMembers({ houseURI }: IGetMembersParams) {
     const { results = [] } = await this.get<IRawMemberAPIResponse>("members", {
       chamber_id: houseURI,

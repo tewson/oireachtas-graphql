@@ -116,5 +116,6 @@ export const typeDefs = gql`
 
   type Query {
     house(type: HouseType!, term: String!): House
+    member(uri: String): Member
   }
 `;

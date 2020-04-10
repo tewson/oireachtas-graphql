@@ -7,6 +7,10 @@ interface IHouseQueryArgs {
   term: string;
 }
 
+interface IMemberQueryArgs {
+  uri: string;
+}
+
 const resolveHouse: IFieldResolver<
   {},
   IResolverContext,
@@ -15,6 +19,15 @@ const resolveHouse: IFieldResolver<
   return dataSources.oireachtasAPI.getHouse(type, term);
 };
 
+const resolveMember: IFieldResolver<
+  {},
+  IResolverContext,
+  IMemberQueryArgs
+> = async (_, { uri }, { dataSources }) => {
+  return dataSources.oireachtasAPI.getMemberByURI(uri);
+};
+
 export const Query: IResolverObject = {
-  house: resolveHouse
+  house: resolveHouse,
+  member: resolveMember
 };
