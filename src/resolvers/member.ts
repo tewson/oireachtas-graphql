@@ -1,11 +1,6 @@
 import { IResolverObject, IFieldResolver } from "graphql-tools";
 
-import {
-  Member as MemberModel,
-  MembershipWrapper,
-  Membership,
-  House
-} from "../models";
+import { Member as MemberModel, House } from "../models";
 import { ResolverContext } from "./common";
 
 interface HousesByURI {
