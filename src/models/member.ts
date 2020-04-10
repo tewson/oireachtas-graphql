@@ -15,7 +15,7 @@ interface RepresentWrapper {
 }
 
 interface PartyWrapper {
-  party: any;
+  party: {};
 }
 
 interface Office {
