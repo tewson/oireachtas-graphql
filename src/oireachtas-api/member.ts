@@ -1,5 +1,4 @@
 import { Member } from "../models";
-import { BaseEntityByHouseAPIParams } from "./common";
 
 interface MemberWrapper {
   member: Member;
@@ -8,5 +7,3 @@ interface MemberWrapper {
 export interface RawMemberAPIResponse {
   results: MemberWrapper[];
 }
-
-export interface GetMembersParams extends BaseEntityByHouseAPIParams {}

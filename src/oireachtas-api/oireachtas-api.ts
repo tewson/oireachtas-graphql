@@ -1,8 +1,9 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
 import { House, Member, Vote } from "../models";
+import { BaseEntityByHouseAPIParams } from "./common";
 import { RawHouseAPIResponse } from "./house";
-import { GetMembersParams, RawMemberAPIResponse } from "./member";
+import { RawMemberAPIResponse } from "./member";
 import { GetVotesParams, RawVoteAPIResponse } from "./vote";
 
 export class OireachtasAPI extends RESTDataSource {
@@ -34,7 +35,9 @@ export class OireachtasAPI extends RESTDataSource {
     return results.map(result => result.member)[0];
   }
 
-  async getMembers({ houseURI }: GetMembersParams): Promise<Member[]> {
+  async getMembers({
+    houseURI
+  }: BaseEntityByHouseAPIParams): Promise<Member[]> {
     const { results = [] } = await this.get<RawMemberAPIResponse>("members", {
       chamber_id: houseURI,
       limit: 200

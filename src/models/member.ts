@@ -1,7 +1,5 @@
 import { Entity, EntityWithShowAs, DateRange } from "./common";
 
-interface MembershipHouse extends Entity {}
-
 enum RepresentType {
   Contituency = "constituency",
   Panel = "panel"
@@ -30,7 +28,7 @@ interface OfficeWrapper {
 }
 
 export interface Membership extends Entity {
-  house: MembershipHouse;
+  house: Entity;
   represents: RepresentWrapper[];
   dateRange: DateRange;
   parties: PartyWrapper[];
