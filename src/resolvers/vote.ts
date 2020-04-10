@@ -36,6 +36,15 @@ const resolveTallies: IFieldResolver<IVote, IResolverContext> = async (
   return tallies;
 };
 
+const resolveHouse: IFieldResolver<IVote, IResolverContext> = async (
+  { house },
+  _,
+  { dataSources }
+) => {
+  return dataSources.oireachtasAPI.getHouseByChamberId(house.uri);
+};
+
 export const Vote: IResolverObject = {
-  tallies: resolveTallies
+  tallies: resolveTallies,
+  house: resolveHouse
 };

@@ -58,10 +58,44 @@ export const typeDefs = gql`
     nilVotes: VoteTally
   }
 
+  type VoteChamber {
+    uri: String
+    showAs: String
+  }
+
+  enum VoteOutcome {
+    _ # Not sure what this outcome means but it has happened. For example: https://www.oireachtas.ie/en/debates/vote/dail/32/2017-06-01/101/.
+    Carried
+    Lost
+  }
+
+  type VoteDebateFormat {
+    uri: String
+  }
+
+  type VoteDebateFormats {
+    pdf: VoteDebateFormat
+    xml: VoteDebateFormat
+  }
+
+  type VoteDebate {
+    uri: String
+    showAs: String
+    debateSection: String
+    formats: VoteDebateFormats
+  }
+
   type Vote {
     subject: VoteSubject
+    date: String
+    datetime: String
+    tellers: String
     tallies: VoteTallies
     house: House
+    chamber: VoteChamber
+    outcome: VoteOutcome
+    isBill: Boolean
+    debate: VoteDebate
   }
 
   enum HouseType {
