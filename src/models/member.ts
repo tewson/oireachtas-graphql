@@ -1,4 +1,4 @@
-import { IEntity, IEntityWithShowAs } from "./common";
+import { IEntity, IEntityWithShowAs, IDateRange } from "./common";
 
 interface IMembershipHouse extends IEntity {}
 
@@ -18,10 +18,7 @@ interface IRepresentWrapper {
 
 interface IOffice {
   officeName: IEntityWithShowAs;
-  dateRange: {
-    start: string;
-    end: string;
-  };
+  dateRange: IDateRange;
 }
 
 interface IOfficeWrapper {
@@ -31,10 +28,7 @@ interface IOfficeWrapper {
 export interface IMembership extends IEntity {
   house: IMembershipHouse;
   represents: IRepresentWrapper[];
-  dateRange: {
-    start: string;
-    end: string;
-  };
+  dateRange: IDateRange;
   offices: IOfficeWrapper[];
 }
 
