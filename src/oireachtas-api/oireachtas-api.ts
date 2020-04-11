@@ -42,10 +42,13 @@ export class OireachtasAPI extends RESTDataSource {
     return results.map(result => result.member)[0];
   }
 
-  async getMembers({ houseURI }: MemberAPIParams): Promise<Member[]> {
+  async getMembers({
+    houseURI,
+    limit = 200
+  }: MemberAPIParams): Promise<Member[]> {
     const { results = [] } = await this.get<RawMemberAPIResponse>("members", {
       chamber_id: houseURI,
-      limit: 200
+      limit
     });
 
     return results.map(result => result.member);

@@ -10,4 +10,5 @@ export interface RawMemberAPIResponse {
 
 export interface MemberAPIParams {
   houseURI?: string;
+  limit?: number;
 }
