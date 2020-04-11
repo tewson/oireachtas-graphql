@@ -7,3 +7,7 @@ interface MemberWrapper {
 export interface RawMemberAPIResponse {
   results: MemberWrapper[];
 }
+
+export interface MemberAPIParams {
+  houseURI?: string;
+}
