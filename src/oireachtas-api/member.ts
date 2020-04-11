@@ -9,6 +9,7 @@ export interface RawMemberAPIResponse {
 }
 
 export interface MemberAPIParams {
+  uri?: string;
   houseURI?: string;
   limit?: number;
 }

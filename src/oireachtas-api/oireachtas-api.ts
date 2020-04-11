@@ -13,6 +13,23 @@ import { RawHouseAPIResponse } from "./house";
 import { MemberAPIParams, RawMemberAPIResponse } from "./member";
 import { GetVotesParams, RawVoteAPIResponse } from "./vote";
 
+interface Params {
+  [key: string]: string | number | undefined;
+}
+
+const removeUndefinedParams = (params: Params): Params => {
+  return Object.keys(params).reduce((newParams, key) => {
+    if (params[key]) {
+      return {
+        ...newParams,
+        [key]: params[key]
+      };
+    }
+
+    return newParams;
+  }, {});
+};
+
 export class OireachtasAPI extends RESTDataSource {
   constructor() {
     super();
@@ -34,22 +51,27 @@ export class OireachtasAPI extends RESTDataSource {
   }
 
   async getMemberByURI(uri: string): Promise<Member> {
-    const { results = [] } = await this.get<RawMemberAPIResponse>("members", {
-      member_id: uri,
+    const retrievedMembers = await this.getMembers({
+      uri,
       limit: 1
     });
 
-    return results.map(result => result.member)[0];
+    return retrievedMembers[0];
   }
 
   async getMembers({
+    uri,
     houseURI,
     limit = 200
   }: MemberAPIParams): Promise<Member[]> {
-    const { results = [] } = await this.get<RawMemberAPIResponse>("members", {
-      chamber_id: houseURI,
-      limit
-    });
+    const { results = [] } = await this.get<RawMemberAPIResponse>(
+      "members",
+      removeUndefinedParams({
+        member_id: uri,
+        chamber_id: houseURI,
+        limit
+      })
+    );
 
     return results.map(result => result.member);
   }
