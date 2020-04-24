@@ -20,7 +20,7 @@ const resolveMemberships: IFieldResolver<MemberModel, ResolverContext> = async (
   );
 
   const resolvedHousePromises = houseURIsToResolve.map(houseURI =>
-    dataSources.oireachtasAPI.getHouseByChamberId(houseURI)
+    dataSources.oireachtasAPI.getHouseByChamberID(houseURI)
   );
   const houses = await Promise.all(resolvedHousePromises);
   const housesByURI = houses.reduce<HousesByURI>(
