@@ -30,6 +30,10 @@ const removeUndefinedParams = (params: Params): Params => {
   }, {});
 };
 
+export function getHouseURIFromTypeAndTerm(type: string, term: string): string {
+  return `https://data.oireachtas.ie/ie/oireachtas/house/${type}/${term}`;
+}
+
 export class OireachtasAPI extends RESTDataSource {
   constructor() {
     super();
@@ -45,9 +49,7 @@ export class OireachtasAPI extends RESTDataSource {
   }
 
   async getHouse(type: string, term: string): Promise<House> {
-    return this.getHouseByChamberId(
-      `https://data.oireachtas.ie/ie/oireachtas/house/${type}/${term}`
-    );
+    return this.getHouseByChamberId(getHouseURIFromTypeAndTerm(type, term));
   }
 
   async getMemberByURI(uri: string): Promise<Member> {
