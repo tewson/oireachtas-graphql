@@ -78,12 +78,29 @@ export class OireachtasAPI extends RESTDataSource {
     return results.map(result => result.member);
   }
 
-  async getVotes({ houseURI, limit = 10000 }: GetVotesParams): Promise<Vote[]> {
-    const { results = [] } = await this.get<RawVoteAPIResponse>("divisions", {
-      chamber_id: houseURI,
-      limit
-    });
+  async getVotes({
+    uri,
+    houseURI,
+    limit = 10000
+  }: Partial<GetVotesParams>): Promise<Vote[]> {
+    const { results = [] } = await this.get<RawVoteAPIResponse>(
+      "divisions",
+      removeUndefinedParams({
+        chamber_id: houseURI,
+        vote_id: uri,
+        limit
+      })
+    );
 
     return results.map(result => result.division);
+  }
+
+  async getVoteByURI(uri: string): Promise<Vote> {
+    const retrievedVotes = await this.getVotes({
+      uri,
+      limit: 1
+    });
+
+    return retrievedVotes[0];
   }
 }

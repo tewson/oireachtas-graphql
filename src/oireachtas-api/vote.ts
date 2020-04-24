@@ -6,6 +6,7 @@ interface VoteAPIResult {
 }
 
 export interface GetVotesParams extends BaseEntityByHouseAPIParams {
+  uri: string;
   limit?: number;
 }
 

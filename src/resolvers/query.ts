@@ -11,6 +11,10 @@ interface MemberQueryArgs {
   uri: string;
 }
 
+interface VoteQueryArgs {
+  uri: string;
+}
+
 const resolveHouse: IFieldResolver<
   {},
   ResolverContext,
@@ -27,7 +31,16 @@ const resolveMember: IFieldResolver<
   return dataSources.oireachtasAPI.getMemberByURI(uri);
 };
 
+const resolveVote: IFieldResolver<{}, ResolverContext, VoteQueryArgs> = async (
+  _,
+  { uri },
+  { dataSources }
+) => {
+  return dataSources.oireachtasAPI.getVoteByURI(uri);
+};
+
 export const Query: IResolverObject = {
   house: resolveHouse,
-  member: resolveMember
+  member: resolveMember,
+  vote: resolveVote
 };
