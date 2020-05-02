@@ -1,6 +1,9 @@
 {
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "src/lambda" // lambda functions are built separately with webpack
+  ],
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
