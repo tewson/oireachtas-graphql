@@ -1,6 +1,8 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
+console.log(process.env);
+
 module.exports = {
   entry: {
     graphql: "./src/lambda/graphql.ts"
