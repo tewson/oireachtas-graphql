@@ -1,15 +1,7 @@
-import { ApolloServer, Config } from "apollo-server-lambda";
+import { ApolloServer } from "apollo-server-lambda";
 
-import { typeDefs } from "../schema";
-import { resolvers } from "../resolvers";
-import { OireachtasAPI } from "../oireachtas-api";
+import { config } from "../config";
 
-const serverConfig: Config = {
-  typeDefs,
-  resolvers,
-  dataSources: () => ({ oireachtasAPI: new OireachtasAPI() })
-};
-
-const server = new ApolloServer(serverConfig);
+const server = new ApolloServer(config);
 
 export const handler = server.createHandler();
