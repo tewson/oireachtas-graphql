@@ -2,7 +2,7 @@ import { ApolloServer } from "apollo-server-lambda";
 
 import { config } from "../config";
 
-const examplePlaygroundQuery = `# Query full names of all members of the 33rd Dáil
+const examplePlaygroundQuery = `# Example query: get full names of all members of the 33rd Dáil
 {
   house(type: dail, term: "33") {
     showAs
