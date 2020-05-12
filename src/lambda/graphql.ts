@@ -18,15 +18,13 @@ const configWithPlayground = {
   playground: {
     tabs: [
       {
-        endpoint: process.env.DEPLOY_URL,
+        endpoint: process.env.URL,
         name: "Example query",
         query: examplePlaygroundQuery
       }
     ]
   }
 };
-
-console.log(process.env);
 
 const server = new ApolloServer(configWithPlayground);
 
