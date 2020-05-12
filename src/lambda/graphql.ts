@@ -26,6 +26,8 @@ const configWithPlayground = {
   }
 };
 
+console.log(process.env);
+
 const server = new ApolloServer(configWithPlayground);
 
 export const handler = server.createHandler();
