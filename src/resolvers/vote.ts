@@ -46,7 +46,7 @@ const resolveHouse: IFieldResolver<VoteModel, ResolverContext> = async (
   _,
   { dataSources }
 ) => {
-  return dataSources.oireachtasAPI.getHouseByChamberId(house.uri);
+  return dataSources.oireachtasAPI.getHouseByChamberID(house.uri);
 };
 
 export const Vote: IResolverObject = {

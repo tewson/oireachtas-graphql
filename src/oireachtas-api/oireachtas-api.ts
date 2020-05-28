@@ -40,16 +40,16 @@ export class OireachtasAPI extends RESTDataSource {
     this.baseURL = "https://api.oireachtas.ie/v1/";
   }
 
-  async getHouseByChamberId(chamberId: string): Promise<House> {
+  async getHouseByChamberID(chamberID: string): Promise<House> {
     const { results = [] } = await this.get<RawHouseAPIResponse>("houses", {
-      chamber_id: chamberId
+      chamber_id: chamberID
     });
 
     return results[0]?.house;
   }
 
   async getHouse(type: string, term: string): Promise<House> {
-    return this.getHouseByChamberId(getHouseURIFromTypeAndTerm(type, term));
+    return this.getHouseByChamberID(getHouseURIFromTypeAndTerm(type, term));
   }
 
   async getMemberByURI(uri: string): Promise<Member> {
