@@ -1,3 +1,6 @@
+/* eslint-env es6, node */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
