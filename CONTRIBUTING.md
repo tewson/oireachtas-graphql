@@ -4,4 +4,4 @@ You can contribute to this project by [creating an issue](https://github.com/tew
 
 ## Code style
 
-We use [Prettier](https://prettier.io) for code formatting and [ESLint](https://eslint.org) for code linting. Run `npm run lint` to lint your changes.
+We use [Prettier](https://prettier.io) with the default configuration for code formatting and [ESLint](https://eslint.org) for code linting. Run `npm run lint` to lint your changes.

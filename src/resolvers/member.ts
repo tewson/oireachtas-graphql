@@ -13,39 +13,39 @@ const resolveMemberships: IFieldResolver<MemberModel, ResolverContext> = async (
   { dataSources }
 ) => {
   const unwrappedMemberships = membershipWrappers.map(
-    membershipWrapper => membershipWrapper.membership
+    (membershipWrapper) => membershipWrapper.membership
   );
   const houseURIsToResolve = unwrappedMemberships.map(
-    membership => membership.house.uri
+    (membership) => membership.house.uri
   );
 
-  const resolvedHousePromises = houseURIsToResolve.map(houseURI =>
+  const resolvedHousePromises = houseURIsToResolve.map((houseURI) =>
     dataSources.oireachtasAPI.getHouseByChamberID(houseURI)
   );
   const houses = await Promise.all(resolvedHousePromises);
   const housesByURI = houses.reduce<HousesByURI>(
     (housesByURI, house) => ({
       ...housesByURI,
-      [house.uri]: house
+      [house.uri]: house,
     }),
     {}
   );
 
-  return unwrappedMemberships.map(unwrappedMembership => ({
+  return unwrappedMemberships.map((unwrappedMembership) => ({
     ...unwrappedMembership,
     house: housesByURI[unwrappedMembership.house.uri],
     represents: unwrappedMembership.represents.map(
-      representWrapper => representWrapper.represent
+      (representWrapper) => representWrapper.represent
     ),
     parties: unwrappedMembership.parties.map(
-      partyWrapper => partyWrapper.party
+      (partyWrapper) => partyWrapper.party
     ),
     offices: unwrappedMembership.offices.map(
-      officeWrapper => officeWrapper.office
-    )
+      (officeWrapper) => officeWrapper.office
+    ),
   }));
 };
 
 export const Member: IResolverObject = {
-  memberships: resolveMemberships
+  memberships: resolveMemberships,
 };

@@ -42,5 +42,5 @@ const resolveVote: IFieldResolver<{}, ResolverContext, VoteQueryArgs> = async (
 export const Query: IResolverObject = {
   house: resolveHouse,
   member: resolveMember,
-  vote: resolveVote
+  vote: resolveVote,
 };

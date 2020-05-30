@@ -7,5 +7,5 @@ import { OireachtasAPI } from "./oireachtas-api";
 export const config: Config = {
   typeDefs,
   resolvers,
-  dataSources: () => ({ oireachtasAPI: new OireachtasAPI() })
+  dataSources: () => ({ oireachtasAPI: new OireachtasAPI() }),
 };

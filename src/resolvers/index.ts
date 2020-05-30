@@ -9,5 +9,5 @@ export const resolvers: IResolvers = {
   Query,
   House,
   Member,
-  Vote
+  Vote,
 };

@@ -4,7 +4,7 @@ import {
   Member,
   Vote as VoteModel,
   VoteTallyMemberWrapper,
-  TallyType
+  TallyType,
 } from "../models";
 import { ResolverContext } from "./common";
 
@@ -12,9 +12,9 @@ const expandTallyMembers = (
   members: Member[],
   tallyMembers: VoteTallyMemberWrapper[]
 ): Member[] => {
-  return members.filter(member =>
+  return members.filter((member) =>
     tallyMembers.some(
-      voteMemberWrapper => voteMemberWrapper.member.uri === member.uri
+      (voteMemberWrapper) => voteMemberWrapper.member.uri === member.uri
     )
   );
 };
@@ -25,7 +25,7 @@ const resolveTallies: IFieldResolver<VoteModel, ResolverContext> = async (
   { dataSources }
 ) => {
   const members = await dataSources.oireachtasAPI.getMembers({
-    houseURI: vote.house.uri
+    houseURI: vote.house.uri,
   });
 
   const tallies = Object.values(TallyType).reduce((tallies, tallyType) => {
@@ -33,8 +33,8 @@ const resolveTallies: IFieldResolver<VoteModel, ResolverContext> = async (
       ...tallies,
       [tallyType]: {
         ...vote.tallies[tallyType],
-        members: expandTallyMembers(members, vote.tallies[tallyType].members)
-      }
+        members: expandTallyMembers(members, vote.tallies[tallyType].members),
+      },
     };
   }, {});
 
@@ -51,5 +51,5 @@ const resolveHouse: IFieldResolver<VoteModel, ResolverContext> = async (
 
 export const Vote: IResolverObject = {
   tallies: resolveTallies,
-  house: resolveHouse
+  house: resolveHouse,
 };

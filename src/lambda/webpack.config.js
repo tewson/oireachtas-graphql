@@ -6,12 +6,12 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   entry: {
-    graphql: "./src/lambda/graphql.ts"
+    graphql: "./src/lambda/graphql.ts",
   },
   output: {
     path: path.resolve(__dirname, "../../built-lambda"),
     filename: "[name].js",
-    libraryTarget: "commonjs"
+    libraryTarget: "commonjs",
   },
   externals: [nodeExternals()],
   module: {
@@ -27,17 +27,17 @@ module.exports = {
                 "@babel/preset-env",
                 {
                   targets: {
-                    node: 12
-                  }
-                }
+                    node: 12,
+                  },
+                },
               ],
-              "@babel/preset-typescript"
-            ]
-          }
-        }
-      }
-    ]
+              "@babel/preset-typescript",
+            ],
+          },
+        },
+      },
+    ],
   },
   resolve: { extensions: [".mjs", ".js", ".ts"] },
-  target: "node"
+  target: "node",
 };

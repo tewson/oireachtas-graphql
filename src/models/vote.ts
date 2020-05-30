@@ -4,7 +4,7 @@ import { House } from "./house";
 export enum TallyType {
   Staon = "staonVotes",
   Ta = "taVotes",
-  Nil = "nilVotes"
+  Nil = "nilVotes",
 }
 
 interface VoteTallyMember extends EntityWithShowAs {

@@ -2,7 +2,7 @@ import { Entity, EntityWithShowAs, DateRange } from "./common";
 
 enum RepresentType {
   Contituency = "constituency",
-  Panel = "panel"
+  Panel = "panel",
 }
 
 interface Represent extends EntityWithShowAs {

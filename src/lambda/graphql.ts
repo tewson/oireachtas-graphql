@@ -20,10 +20,10 @@ const configWithPlayground = {
       {
         endpoint: process.env.URL,
         name: "Example query",
-        query: examplePlaygroundQuery
-      }
-    ]
-  }
+        query: examplePlaygroundQuery,
+      },
+    ],
+  },
 };
 
 const server = new ApolloServer(configWithPlayground);

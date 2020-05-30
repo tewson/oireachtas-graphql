@@ -31,5 +31,5 @@ export const House: IResolverObject = {
   term: resolveTerm,
   dateRange: resolveDateRange,
   members: resolveMembers,
-  votes: resolveVotes
+  votes: resolveVotes,
 };

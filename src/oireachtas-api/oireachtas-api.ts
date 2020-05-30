@@ -22,7 +22,7 @@ const removeUndefinedParams = (params: Params): Params => {
     if (params[key]) {
       return {
         ...newParams,
-        [key]: params[key]
+        [key]: params[key],
       };
     }
 
@@ -42,7 +42,7 @@ export class OireachtasAPI extends RESTDataSource {
 
   async getHouseByChamberID(chamberID: string): Promise<House> {
     const { results = [] } = await this.get<RawHouseAPIResponse>("houses", {
-      chamber_id: chamberID
+      chamber_id: chamberID,
     });
 
     return results[0]?.house;
@@ -55,7 +55,7 @@ export class OireachtasAPI extends RESTDataSource {
   async getMemberByURI(uri: string): Promise<Member> {
     const retrievedMembers = await this.getMembers({
       uri,
-      limit: 1
+      limit: 1,
     });
 
     return retrievedMembers[0];
@@ -64,41 +64,41 @@ export class OireachtasAPI extends RESTDataSource {
   async getMembers({
     uri,
     houseURI,
-    limit = 200
+    limit = 200,
   }: MemberAPIParams): Promise<Member[]> {
     const { results = [] } = await this.get<RawMemberAPIResponse>(
       "members",
       removeUndefinedParams({
         member_id: uri,
         chamber_id: houseURI,
-        limit
+        limit,
       })
     );
 
-    return results.map(result => result.member);
+    return results.map((result) => result.member);
   }
 
   async getVotes({
     uri,
     houseURI,
-    limit = 10000
+    limit = 10000,
   }: Partial<GetVotesParams>): Promise<Vote[]> {
     const { results = [] } = await this.get<RawVoteAPIResponse>(
       "divisions",
       removeUndefinedParams({
         chamber_id: houseURI,
         vote_id: uri,
-        limit
+        limit,
       })
     );
 
-    return results.map(result => result.division);
+    return results.map((result) => result.division);
   }
 
   async getVoteByURI(uri: string): Promise<Vote> {
     const retrievedVotes = await this.getVotes({
       uri,
-      limit: 1
+      limit: 1,
     });
 
     return retrievedVotes[0];
