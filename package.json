@@ -1,7 +1,7 @@
 {
   "name": "oireachtas-graphql",
   "version": "0.1.0-alpha.0",
-  "description": "",
+  "description": "An unofficial GraphQL proxy for the Houses of the Oireachtas Open Data APIs.",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist built-lambda",
@@ -13,7 +13,7 @@
     "lint": "eslint src --ext .js,.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Tewson Seeoun <tewson.seeoun@gmail.com> (https://github.com/tewson)",
   "license": "MIT",
   "dependencies": {
     "apollo-datasource-rest": "^0.8.0",
