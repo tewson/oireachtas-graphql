@@ -21,7 +21,7 @@ We need both queries because the vote query alone doesn't return the full member
 
 By using GraphQL, we can combine both queries into one similar to an example query below.
 
-```gql
+```graphql
 {
   house(type: dail, term: "32") {
     showAs
