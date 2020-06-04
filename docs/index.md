@@ -6,7 +6,7 @@ An unofficial GraphQL proxy for [the Houses of the Oireachtas Open Data APIs](ht
 
 The Oireachtas Open Data APIs provide dedicated API endpoints for different entity types. For example, we can make a query to the `/houses` endpoint for data on a specific Dáil term, and make another query to the `/members` endpoint to retrieve a list of members during that term.
 
-[GraphQL](https://graphql.org/) can help us to better express what data we want to query and combine multiple queries into one.
+[GraphQL](https://graphql.org/) can help us better express what data we want to query and combine multiple queries into one.
 
 ## Example Use Case
 
